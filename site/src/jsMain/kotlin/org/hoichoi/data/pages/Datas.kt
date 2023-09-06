@@ -15,8 +15,6 @@ import com.varabyte.kobweb.silk.components.text.SpanText
 import org.jetbrains.compose.web.css.AlignContent
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
-import org.jetbrains.compose.web.dom.P
-import org.jetbrains.compose.web.dom.Text
 
 @Composable
 fun DataPage()
@@ -53,7 +51,7 @@ val dataList = arrayListOf(
         desc = " This is a sample desc"
     ),
     Data(
-        title = "",
+        title = "This is Second Title ",
         image = "https://drive.google.com/uc?export=view&id=1kXmFdJkQZHqDMWCOAOMhxbDy0CCnJR_l",
         subHeading = "",
         desc = ""

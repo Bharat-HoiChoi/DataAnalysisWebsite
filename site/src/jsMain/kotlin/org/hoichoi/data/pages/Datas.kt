@@ -13,7 +13,6 @@ import com.varabyte.kobweb.silk.components.layout.SimpleGrid
 import com.varabyte.kobweb.silk.components.layout.numColumns
 import com.varabyte.kobweb.silk.components.text.SpanText
 import org.jetbrains.compose.web.css.AlignContent
-import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 
 @Composable
@@ -23,12 +22,20 @@ fun DataPage()
         modifier = Modifier.fillMaxWidth().scrollBehavior(ScrollBehavior.Smooth).alignContent(AlignContent.Center)
     ){
         SimpleGrid(modifier = Modifier.fillMaxWidth(), numColumns = numColumns(base = 2)){
-            dataList.forEach {
-                Column(modifier = Modifier.fillMaxWidth(80.percent)) {
-                    SpanText(it.title,modifier = Modifier.fontSize(30.px).color(Colors.Black).align(Alignment.CenterHorizontally))
-                    SpanText(it.subHeading,modifier = Modifier.fontSize(26.px).color(Colors.Black).align(Alignment.CenterHorizontally))
-                    Image(modifier = Modifier.height(500.px).width(500.px).objectFit(ObjectFit.Fill), src = it.image)
-                    SpanText(it.desc,modifier = Modifier.fontSize(22.px).color(Colors.Black).align(Alignment.CenterHorizontally))
+            dataList.forEachIndexed { index, data ->
+                Column(modifier = Modifier.fillMaxWidth()) {
+                    SpanText(data.title,modifier = Modifier.fontSize(30.px).color(Colors.Black).align(Alignment.CenterHorizontally))
+                    SpanText(data.subHeading,modifier = Modifier.fontSize(26.px).color(Colors.Black).align(Alignment.CenterHorizontally))
+                    if (index in 0..1)
+                    {
+                        Image(modifier = Modifier.fillMaxWidth().height(500.px).objectFit(ObjectFit.Fill), src = data.image)
+
+                    }
+                    else{
+                        Image(modifier = Modifier.fillMaxWidth().aspectRatio(1).objectFit(ObjectFit.Fill), src = data.image)
+                    }
+
+                    SpanText(data.desc,modifier = Modifier.fontSize(22.px).color(Colors.Black).align(Alignment.CenterHorizontally))
 
                 }
             }
@@ -45,26 +52,38 @@ data class Data(
 
 val dataList = arrayListOf(
     Data(
-        title = "Avi Details",
+        title = "",
         image = "https://drive.google.com/uc?export=view&id=1aTL4B8Xef5hLK22Ql72cCO9HVrlNt140",
-        subHeading = "avas",
-        desc = " This is a sample desc"
+        subHeading = "",
+        desc = ""
     ),
     Data(
-        title = "This is Second Title ",
+        title = "",
         image = "https://drive.google.com/uc?export=view&id=1kXmFdJkQZHqDMWCOAOMhxbDy0CCnJR_l",
         subHeading = "",
         desc = ""
     ),
     Data(
         title = "",
-        image = "https://drive.google.com/uc?export=view&id=17O6y2vl4kcgywRXNZOmeKxCrBc5T48vc",
+        image = "https://drive.google.com/uc?export=view&id=1LadLN2r-EAFwEcnd3Zo2XPVqmE8FCgo2",
         subHeading = "",
         desc = ""
     ),
     Data(
         title = "",
-        image = "https://drive.google.com/uc?export=view&id=1BCqCRhNTNw46Z_qLlTbYH392OLiQ5cqa",
+        image = "https://drive.google.com/uc?export=view&id=1vz8czZAcaYH6Tti9UDZFKnZM2rsJTzwV",
+        subHeading = "",
+        desc = ""
+    ),
+    Data(
+        title = "",
+        image = "https://drive.google.com/uc?export=view&id=1kZmYB7jsDgMkbZNOSdauN1NkJ7LdtTiO",
+        subHeading = "",
+        desc = ""
+    ),
+    Data(
+        title = "",
+        image = "https://drive.google.com/uc?export=view&id=1wv0yz4CdKsPjMZtG7PlVGYzT7mopsnxj",
         subHeading = "",
         desc = ""
     ),
